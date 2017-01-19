@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import preact, { Component } from 'preact';
 import { Disposable, CompositeDisposable, SerialDisposable } from 'disposables';
 import shallowEqual from './utils/shallowEqual';
 import shallowEqualScalar from './utils/shallowEqualScalar';
@@ -27,10 +27,6 @@ export default function decorateHandler({
     static DecoratedComponent = DecoratedComponent;
 
     static displayName = `${containerDisplayName}(${displayName})`;
-
-    static contextTypes = {
-      dragDropManager: PropTypes.object.isRequired
-    }
 
     getHandlerId() {
       return this.handlerId;

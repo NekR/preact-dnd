@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Container from './Container';
 
 export default class SortableStressTest extends Component {

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import { PropTypes, Component } from 'react';
 import { DragSource } from 'react-dnd';
 
 const style = {
@@ -29,13 +29,6 @@ const boxSource = {
   isDragging: monitor.isDragging()
 }))
 export default class Box extends Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-    isDropped: PropTypes.bool.isRequired
-  };
 
   render() {
     const { name, isDropped, isDragging, connectDragSource } = this.props;

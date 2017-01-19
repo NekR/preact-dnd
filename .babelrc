@@ -1,4 +1,10 @@
 {
-  "stage": 0,
-  "loose": ["es6.modules", "es6.classes"]
+  "presets": ["es2015", "stage-0"],
+  "plugins": [
+    "transform-class-properties",
+    "transform-decorators-legacy",
+    ["transform-react-jsx", {
+      "pragma": "preact.h"
+    }]
+  ]
 }

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import { ItemTypes } from './Constants';
 import { DragSource } from 'react-dnd';
 

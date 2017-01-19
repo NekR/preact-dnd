@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import ItemTypes from './ItemTypes';
 import { DragSource } from 'react-dnd';
 
@@ -20,14 +20,9 @@ const BoxSource = {
 @DragSource(ItemTypes.BOX, BoxSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.is Target/__tests__/Box-test.js:Dragging()
 }))
 export default class BoxWithImage extends Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    connectDragPreview: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired
-  };
 
   componentDidMount() {
     const img = new Image();

@@ -8,11 +8,11 @@ module.exports = {
     ]
   },
   externals: [{
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react'
+    preact: {
+      root: 'preact',
+      commonjs2: 'preact',
+      commonjs: 'preact',
+      amd: 'preact'
     }
   }],
   output: {

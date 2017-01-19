@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import update from 'react/lib/update';
 import Card from './Card';
 import { DropTarget, DragDropContext } from 'react-dnd';
@@ -19,9 +19,6 @@ const cardTarget = {
   connectDropTarget: connect.dropTarget()
 }))
 export default class Container extends Component {
-  static propTypes = {
-    connectDropTarget: PropTypes.func.isRequired
-  };
 
   constructor(props) {
     super(props);

@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import { PropTypes, Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import Colors from './Colors';
 
@@ -23,14 +23,6 @@ const ColorTarget = {
   draggingColor: monitor.getItemType()
 }))
 class TargetBox extends Component {
-  static propTypes = {
-    isOver: PropTypes.bool.isRequired,
-    canDrop: PropTypes.bool.isRequired,
-    draggingColor: PropTypes.string,
-    lastDroppedColor: PropTypes.string,
-    connectDropTarget: PropTypes.func.isRequired,
-    onDrop: PropTypes.func.isRequired
-  };
 
   render() {
     const { canDrop, isOver, draggingColor, lastDroppedColor, connectDropTarget } = this.props;

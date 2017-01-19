@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import { PropTypes, Component } from 'react';
 import { DropTarget } from 'react-dnd';
 
 const style = {
@@ -26,14 +26,6 @@ const dustbinTarget = {
   canDrop: monitor.canDrop()
 }))
 export default class Dustbin extends Component {
-  static propTypes = {
-    connectDropTarget: PropTypes.func.isRequired,
-    isOver: PropTypes.bool.isRequired,
-    canDrop: PropTypes.bool.isRequired,
-    accepts: PropTypes.arrayOf(PropTypes.string).isRequired,
-    lastDroppedItem: PropTypes.object,
-    onDrop: PropTypes.func.isRequired
-  };
 
   render() {
     const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;

@@ -1,15 +1,26 @@
 import cloneWithRef from './utils/cloneWithRef';
-import { isValidElement } from 'react';
+// import { isValidElement } from 'react';
+
+function isValidElement(object) {
+  if (!object) return false;
+
+  return (
+    'nodeName' in object &&
+    'attributes' in object &&
+    'children' in object &&
+    'key' in object
+  );
+}
 
 function throwIfCompositeComponentElement(element) {
   // Custom components can no longer be wrapped directly in React DnD 2.0
   // so that we don't need to depend on findDOMNode() from react-dom.
-  if (typeof element.type === 'string') {
+  if (typeof element.nodeName === 'string') {
     return;
   }
 
-  const displayName = element.type.displayName ||
-    element.type.name ||
+  const displayName = element.nodeName.displayName ||
+    element.nodeName.name ||
     'the component';
 
   throw new Error(

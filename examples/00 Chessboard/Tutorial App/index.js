@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Board from './Board';
 import { observe } from './Game';
 

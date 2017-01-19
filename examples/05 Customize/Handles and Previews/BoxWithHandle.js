@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import ItemTypes from './ItemTypes';
 import { DragSource } from 'react-dnd';
 
@@ -31,11 +31,6 @@ const boxSource = {
   isDragging: monitor.isDragging()
 }))
 export default class BoxWithHandle extends Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    connectDragPreview: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired
-  };
 
   render() {
     const { isDragging, connectDragSource, connectDragPreview } = this.props;

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import preact, { Component } from 'preact';
 import shallowEqual from './utils/shallowEqual';
 import shallowEqualScalar from './utils/shallowEqualScalar';
 import isPlainObject from 'lodash/isPlainObject';
@@ -37,12 +37,8 @@ export default function DragLayer(collect, options = {}) {
 
       static displayName = `DragLayer(${displayName})`;
 
-      static contextTypes = {
-        dragDropManager: PropTypes.object.isRequired
-      }
-
       getDecoratedComponentInstance() {
-        return this.refs.child;
+        return this.child;
       }
 
       shouldComponentUpdate(nextProps, nextState) {
@@ -104,11 +100,15 @@ export default function DragLayer(collect, options = {}) {
         return collect(monitor);
       }
 
+      setChildRef = (child) => {
+        this.child = child;
+      }
+
       render() {
         return (
           <DecoratedComponent {...this.props}
                               {...this.state}
-                              ref='child' />
+                              ref={this.setChildRef} />
         );
       }
     }

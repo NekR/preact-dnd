@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
 
@@ -38,13 +38,6 @@ const boxTarget = {
   isOverCurrent: monitor.isOver({ shallow: true })
 }))
 export default class Dustbin extends Component {
-  static propTypes = {
-    connectDropTarget: PropTypes.func.isRequired,
-    isOver: PropTypes.bool.isRequired,
-    isOverCurrent: PropTypes.bool.isRequired,
-    greedy: PropTypes.bool,
-    children: PropTypes.node
-  }
 
   constructor(props) {
     super(props);

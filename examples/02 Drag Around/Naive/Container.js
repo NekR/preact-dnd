@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import update from 'react/lib/update';
 import ItemTypes from './ItemTypes';
 import Box from './Box';
@@ -28,10 +28,6 @@ const boxTarget = {
   connectDropTarget: connect.dropTarget()
 }))
 export default class Container extends Component {
-  static propTypes = {
-    hideSourceOnDrag: PropTypes.bool.isRequired,
-    connectDropTarget: PropTypes.func.isRequired
-  };
 
   constructor(props) {
     super(props);

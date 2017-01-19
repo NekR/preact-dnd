@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import SourceBox from './SourceBox';
 import TargetBox from './TargetBox';
 import Colors from './Colors';

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import Square from './Square';
 import { canMoveKnight, moveKnight } from './Game';
 import { ItemTypes } from './Constants';
@@ -24,14 +24,6 @@ function collect(connect, monitor) {
 
 @DropTarget(ItemTypes.KNIGHT, squareTarget, collect)
 export default class BoardSquare extends Component {
-  static propTypes = {
-    x: PropTypes.number.isRequired,
-    y: PropTypes.number.isRequired,
-    isOver: PropTypes.bool.isRequired,
-    canDrop: PropTypes.bool.isRequired,
-    connectDropTarget: PropTypes.func.isRequired,
-    children: PropTypes.node
-  };
 
   renderOverlay(color) {
     return (

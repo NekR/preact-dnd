@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import Dustbin from './Dustbin';
 import Box from './Box';
 import { DragDropContext } from 'react-dnd';

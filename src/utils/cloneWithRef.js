@@ -1,5 +1,5 @@
 import invariant from 'invariant';
-import { cloneElement } from 'react';
+import { cloneElement } from 'preact';
 
 export default function cloneWithRef(element, newRef) {
   const previousRef = element.ref;

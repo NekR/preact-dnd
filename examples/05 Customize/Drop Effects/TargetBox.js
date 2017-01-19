@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react';
+import { PropTypes, Component } from 'react';
 import ItemTypes from './ItemTypes';
 import { DropTarget } from 'react-dnd';
 
@@ -21,11 +21,6 @@ const boxTarget = {
   canDrop: monitor.canDrop()
 }))
 export default class TargetBox extends Component {
-  static propTypes = {
-    connectDropTarget: PropTypes.func.isRequired,
-    isOver: PropTypes.bool.isRequired,
-    canDrop: PropTypes.bool.isRequired
-  };
 
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props;

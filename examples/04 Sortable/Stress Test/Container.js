@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import update from 'react/lib/update';
 import { name } from 'faker';
 import Card from './Card';

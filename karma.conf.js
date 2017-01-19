@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = function (config) {
   config.set({
@@ -22,9 +23,16 @@ module.exports = function (config) {
       resolve: {
         alias: {
           'react-dnd/modules': path.join(__dirname, './src'),
-          'react-dnd': path.join(__dirname, './src')
+          'react-dnd': path.join(__dirname, './src'),
+          'react-dom/lib/ReactTestUtils': path.join(__dirname, 'test-utils.js'),
+          'react': 'preact',
         }
-      }
+      },
+      plugins: [
+        new webpack.ProvidePlugin({
+          preact: 'preact'
+        }),
+      ]
     },
     webpackServer: {
       noInfo: true

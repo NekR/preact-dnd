@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import Colors from './Colors';
 import { DragSource } from 'react-dnd';
 
@@ -23,14 +23,6 @@ const ColorSource = {
   isDragging: monitor.isDragging()
 }))
 class SourceBox extends Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    color: PropTypes.string.isRequired,
-    forbidDrag: PropTypes.bool.isRequired,
-    onToggleForbidDrag: PropTypes.func.isRequired,
-    children: PropTypes.node
-  };
 
   render() {
     const { color, children, isDragging, connectDragSource, forbidDrag, onToggleForbidDrag } = this.props;

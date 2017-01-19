@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import preact, { Component } from 'preact';
 import { DragDropManager } from 'dnd-core';
 import invariant from 'invariant';
 import checkDecoratorArguments from './utils/checkDecoratorArguments';
@@ -36,12 +36,8 @@ export default function DragDropContext(backendOrModule) {
 
       static displayName = `DragDropContext(${displayName})`;
 
-      static childContextTypes = {
-        dragDropManager: PropTypes.object.isRequired
-      };
-
       getDecoratedComponentInstance() {
-        return this.refs.child;
+        return this.child;
       }
 
       getManager() {
@@ -52,10 +48,13 @@ export default function DragDropContext(backendOrModule) {
         return childContext;
       }
 
+      setChildRef = (child) => {
+        this.child = child;
+      }
+
       render() {
         return (
-          <DecoratedComponent {...this.props}
-                              ref='child' />
+          <DecoratedComponent {...this.props} ref={this.setChildRef} />
         );
       }
     }

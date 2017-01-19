@@ -1,10 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 
 export default class Square extends Component {
-  static propTypes = {
-    black: PropTypes.bool,
-    children: PropTypes.node
-  };
 
   render() {
     const { black } = this.props;

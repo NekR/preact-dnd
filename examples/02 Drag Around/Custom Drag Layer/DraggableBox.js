@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import { Component, PropTypes } from 'react';
 import shouldPureComponentUpdate from './shouldPureComponentUpdate';
 import ItemTypes from './ItemTypes';
 import Box from './Box';
@@ -33,15 +33,6 @@ function getStyles(props) {
   isDragging: monitor.isDragging()
 }))
 export default class DraggableBox extends Component {
-  static propTypes = {
-    connectDragSource: PropTypes.func.isRequired,
-    connectDragPreview: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool.isRequired,
-    id: PropTypes.any.isRequired,
-    title: PropTypes.string.isRequired,
-    left: PropTypes.number.isRequired,
-    top: PropTypes.number.isRequired
-  };
 
   shouldComponentUpdate = shouldPureComponentUpdate;
 

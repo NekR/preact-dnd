@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import update from 'react/lib/update';
 import Card from './Card';
 import { DragDropContext } from 'react-dnd';
