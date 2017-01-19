@@ -1,27 +1,25 @@
 import preact from 'preact';
 
 export default {
-  renderIntoDocument(component) {
-    let instance;
-
+  renderIntoDocument(component, callback) {
     const elem = document.createElement('div');
-    const clone = preact.cloneElement(component, {
-      ref: function(a) {
-        instance = a;
+
+    class Wrap extends preact.Component {
+      render() {
+        const clone = preact.cloneElement(component, {
+          ref: (a) => {
+            this.instance = a;
+          }
+        });
+
+        return clone;
       }
-    });
 
-    // console.log(clone);
+      componentDidMount() {
+        callback(this.instance);
+      }
+    }
 
-    const out = preact.render(clone, elem);
-
-    console.log(out);
-    console.log(instance);
-
-    return instance;
-  },
-  findRenderedDOMComponentWithTag(root, tag) {
-
-  },
-  findRenderedComponentWithType() {},
+    preact.render(<Wrap />, elem);
+  }
 };

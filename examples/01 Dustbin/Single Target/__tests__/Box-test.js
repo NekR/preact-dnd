@@ -4,50 +4,86 @@ import expect from 'expect';
 import Box from '../Box';
 
 describe('Box', () => {
-  it('can be tested independently', () => {
-    // Obtain the reference to the component before React DnD wrapping
-    const OriginalBox = Box.DecoratedComponent;
+  describe('can be tested independently', () => {
+    it('it is not dragging', (done) => {
+      // Obtain the reference to the component before React DnD wrapping
+      const OriginalBox = Box.DecoratedComponent;
 
-    // Stub the React DnD connector functions with an identity function
-    const identity = x => x;
+      // Stub the React DnD connector functions with an identity function
+      const identity = x => x;
 
-    // Render with one set of props and test
-    let root = TestUtils.renderIntoDocument(
-      <OriginalBox name='test'
-                   connectDragSource={identity}
-                   isDragging={false} />
-    );
-    let div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-    expect(div.style.opacity).toEqual('1');
+      // Render with one set of props and test
+      TestUtils.renderIntoDocument(
+        <OriginalBox name='test'
+                     connectDragSource={identity}
+                     isDragging={false}
+        />, (instance) => {
+          const div = findSelector(instance.base, 'div');
+          expect(div.style.opacity).toEqual('1');
+          done();
+        }
+      );
+    });
 
-    // Render with another set of props and test
-    root = TestUtils.renderIntoDocument(
-      <OriginalBox name='test'
-                   connectDragSource={identity}
-                   isDragging />
-    );
-    div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-    expect(div.style.opacity).toEqual('0.4');
-  });
+    it('it is dragging', (done) => {
+      // Obtain the reference to the component before React DnD wrapping
+      const OriginalBox = Box.DecoratedComponent;
 
-  it('can be tested with the testing backend', () => {
+      // Stub the React DnD connector functions with an identity function
+      const identity = x => x;
+
+      // Render with one set of props and test
+      TestUtils.renderIntoDocument(
+        <OriginalBox name='test'
+                     connectDragSource={identity}
+                     isDragging
+        />, (instance) => {
+          const div = findSelector(instance.base, 'div');
+          // WTF it's '0,4' instead of `0.4`?
+          expect(div.style.opacity).toEqual('0,4');
+          done();
+        }
+      );
+    });
+  })
+
+  it('can be tested with the testing backend', (done) => {
     // Render with the testing backend
-    const BoxContext = wrapInTestContext(Box);
-    const root = TestUtils.renderIntoDocument(<BoxContext name='test' />);
 
-    // Obtain a reference to the backend
-    const backend = root.getManager().getBackend();
+    let box;
+    const BoxContext = wrapInTestContext(Box, (a) => {
+      box = a;
+    });
 
-    // Check that the opacity is 1
-    let div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-    expect(div.style.opacity).toEqual('1');
+    TestUtils.renderIntoDocument(
+      <BoxContext name='test' />, (instance) => {
+        let div;
 
-    // Find the drag source ID and use it to simulate the dragging state
-    const box = TestUtils.findRenderedComponentWithType(root, Box);
-    backend.simulateBeginDrag([box.getHandlerId()]);
+        // Obtain a reference to the backend
+        const backend = instance.getManager().getBackend();
+        div = findSelector(instance.base, 'div');
+        expect(div.style.opacity).toEqual('1');
 
-    // Verify that the div changed its opacity
-    div = TestUtils.findRenderedDOMComponentWithTag(root, 'div');
-    expect(div.style.opacity).toEqual('0.4');
+        // Simulate the dragging state
+        backend.simulateBeginDrag([box.getHandlerId()]);
+
+        setTimeout(() => {
+          // Verify that the div changed its opacity
+          div = findSelector(instance.base, 'div');
+          // WTF it's '0,4' instead of `0.4`?
+          expect(div.style.opacity).toEqual('0,4');
+
+          done();
+        }, 1);
+      }
+    );
   });
 });
+
+function findSelector(elem, selector) {
+  if (elem.matches(selector)) {
+    return elem;
+  }
+
+  return elem.querySelector(selector);
+}

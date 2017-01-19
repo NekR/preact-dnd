@@ -40,7 +40,7 @@ export default class Box extends Component {
   render() {
     const { isDragging, connectDragSource } = this.props;
     const { name } = this.props;
-    const opacity = isDragging ? 0.4 : 1;
+    const opacity = isDragging ? '0.4' : '1';
 
     return (
       connectDragSource(
