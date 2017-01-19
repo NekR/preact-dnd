@@ -1,7 +1,7 @@
 {
-  "name": "react-dnd",
+  "name": "preact-dnd",
   "version": "2.1.4",
-  "description": "Drag and Drop for React",
+  "description": "Drag and Drop for Preact (port from React DnD)",
   "main": "lib/index.js",
   "scripts": {
     "start": "./scripts/startSiteDevServer.sh",
@@ -10,8 +10,11 @@
     "build": "./scripts/build.sh",
     "lint": "eslint .",
     "test": "karma start",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && npm test"
   },
+  "files": [
+    "lib/"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gaearon/react-dnd.git"
