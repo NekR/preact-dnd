@@ -31,15 +31,15 @@
     "drag-and-drop",
     "dnd",
     "javascript",
-    "react-component",
+    "preact-component",
     "hoc"
   ],
   "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gaearon/react-dnd/issues"
+    "url": "https://github.com/NekR/preact-dnd/issues"
   },
-  "homepage": "https://github.com/gaearon/react-dnd",
+  "homepage": "https://github.com/NekR/preact-dnd/",
   "dependencies": {
     "disposables": "^1.0.1",
     "dnd-core": "^2.0.1",
