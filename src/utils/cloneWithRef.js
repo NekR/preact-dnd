@@ -2,7 +2,7 @@ import invariant from 'invariant';
 import { cloneElement } from 'preact';
 
 export default function cloneWithRef(element, newRef) {
-  const previousRef = element.ref;
+  const previousRef = element.attributes.ref;
   invariant(
     typeof previousRef !== 'string',
     'Cannot connect React DnD to an element with an existing string ref. ' +
