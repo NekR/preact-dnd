@@ -1,4 +1,4 @@
-Drag and Drop for Preact.
+Drag and Drop for Preact
 =========
 
 _This is a form of [react-dnd](https://github.com/react-dnd/react-dnd) made by [@gaearon](https://github.com/gaearon)_
