@@ -39,8 +39,7 @@ describe('Box', () => {
                      isDragging
         />, (instance) => {
           const div = findSelector(instance.base, 'div');
-          // WTF it's '0,4' instead of `0.4`?
-          expect(div.style.opacity).toEqual('0,4');
+          expect(div.style.opacity).toEqual('0.4');
           done();
         }
       );
@@ -70,8 +69,7 @@ describe('Box', () => {
         setTimeout(() => {
           // Verify that the div changed its opacity
           div = findSelector(instance.base, 'div');
-          // WTF it's '0,4' instead of `0.4`?
-          expect(div.style.opacity).toEqual('0,4');
+          expect(div.style.opacity).toEqual('0.4');
 
           done();
         }, 1);
